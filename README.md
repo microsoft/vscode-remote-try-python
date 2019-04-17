@@ -2,7 +2,11 @@
 
 This is a sample project to go along with the "try" quick start for the VS Code Remote - Containers extension.
 
-See [https://aka.ms/vscode-remote/containers/getting-started](https://aka.ms/vscode-remote/containers/getting-started) for details.
+Using the sample:
+
+1. **[Windows]** Disable automatic line ending conversion for Git on the *Windows side* (given Linux and Windows use different line endings). Run: `git config --global core.autocrlf false`
+2. Follow the steps at [https://aka.ms/vscode-remote/containers/getting-started](https://aka.ms/vscode-remote/containers/getting-started).
+3. Open `hello.py`, launch the program, edit, and try things out!
 
 Other samples and dev container definitions:
 - [Tweeter App - Python and Django](https://github.com/Microsoft/python-sample-tweeterapp)
