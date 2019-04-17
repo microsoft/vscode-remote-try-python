@@ -4,9 +4,11 @@ This is a sample project to go along with the "try" quick start for the VS Code 
 
 See [https://aka.ms/vsocde-remote/containers/getting-started](https://aka.ms/vsocde-remote/containers/getting-started) for details.
 
-Other samples that include dev containers for Python:
-- [Python 3 - Anaconda](https://github.com/Microsoft/python-sample-anacondacontainer)
+Other samples and dev container definitions:
 - [Tweeter App - Python and Django](https://github.com/Microsoft/python-sample-tweeterapp)
+- [Python 3 - Anaconda dev container definition](https://github.com/Microsoft/vscode-dev-containers/tree/master/containers/python-3-anaconda)
+- [Python 3 - Miniconda dev container definition](https://github.com/Microsoft/vscode-dev-containers/tree/master/containers/python-3-miniconda)
+- [Python 3 & Posgres dev container definition](https://github.com/Microsoft/vscode-dev-containers/tree/master/containers/python-3-posgres)
 
 ## Contributing
 
