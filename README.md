@@ -6,9 +6,11 @@ See [https://aka.ms/vsocde-remote/containers/getting-started](https://aka.ms/vso
 
 Other samples and dev container definitions:
 - [Tweeter App - Python and Django](https://github.com/Microsoft/python-sample-tweeterapp)
-- [Python 3 - Anaconda dev container definition](https://github.com/Microsoft/vscode-dev-containers/tree/master/containers/python-3-anaconda)
-- [Python 3 - Miniconda dev container definition](https://github.com/Microsoft/vscode-dev-containers/tree/master/containers/python-3-miniconda)
-- [Python 3 & Posgres dev container definition](https://github.com/Microsoft/vscode-dev-containers/tree/master/containers/python-3-posgres)
+- Dev container definitions with sample content
+    - [Python 3](https://github.com/Microsoft/vscode-dev-containers/tree/master/containers/python-3)
+    - [Python 3 - Anaconda](https://github.com/Microsoft/vscode-dev-containers/tree/master/containers/python-3-anaconda)
+    - [Python 3 - Miniconda](https://github.com/Microsoft/vscode-dev-containers/tree/master/containers/python-3-miniconda)
+    - [Python 3 & Posgres](https://github.com/Microsoft/vscode-dev-containers/tree/master/containers/python-3-posgres)
 
 ## Contributing
 
