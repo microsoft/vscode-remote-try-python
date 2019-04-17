@@ -1,0 +1,9 @@
+{
+	"name": "Python Sample",
+	"dockerFile": "Dockerfile",
+	"context": "..",
+	"extensions": [
+		"ms-python.python",
+		"VisualStudioExptTeam.vscodeintellicode"
+	]
+}
