@@ -2,7 +2,7 @@
 
 This is a sample project to go along with the "try" quick start for the VS Code Remote - Containers extension.
 
-See [https://aka.ms/vsocde-remote/containers/getting-started](https://aka.ms/vsocde-remote/containers/getting-started) for details.
+See [https://aka.ms/vscode-remote/containers/getting-started](https://aka.ms/vscode-remote/containers/getting-started) for details.
 
 Other samples and dev container definitions:
 - [Tweeter App - Python and Django](https://github.com/Microsoft/python-sample-tweeterapp)
