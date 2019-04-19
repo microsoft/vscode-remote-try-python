@@ -11,5 +11,5 @@ RequestHandler = http.server.SimpleHTTPRequestHandler
 PORT = 5000
 
 with socketserver.TCPServer(("", PORT), RequestHandler) as httpd:
-    print("Server runnong on port", PORT)
+    print("Server running on port", PORT)
     httpd.serve_forever()

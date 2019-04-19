@@ -14,13 +14,13 @@ Some things to try:
    1. Open `server.py`
    2. Try adding some code and check out the language features.
 2. **Terminal:** Press <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>\`</kbd> and type `uname` and or other Linux commands from the terminal window.
-2. **Build, Run, and Debug:**
+3. **Build, Run, and Debug:**
    1. Open `sever.py`
    2. Add a breakpoint (e.g. on line 13).
    3. Press <kbd>F5</kbd> to launch the app in the container.
    4. Once the breakpoint is hit, try hovering over variables, examining locals, and more.
    5. Continue, then open a local browser and go to `http://localhost:9000` and note you can connect to the server in the container
-3. **Forward another port:**
+4. **Forward another port:**
    1. Stop debugging and remove the breakpoint.
    2. Open `sever.py`
    3. Change the server port to 5000. (`PORT = 5000`)

@@ -4,7 +4,6 @@
 	"appPort": 9000,
 	"context": "..",
 	"extensions": [
-		"ms-python.python",
-		"VisualStudioExptTeam.vscodeintellicode"
+		"ms-python.python"
 	]
 }
