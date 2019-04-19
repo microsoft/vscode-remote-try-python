@@ -3,4 +3,13 @@
 # Licensed under the MIT License. See LICENSE in the project root for license information.
 #-----------------------------------------------------------------------------------------
 
-print('Hello, remote world!')
+import socketserver
+import http.server
+
+RequestHandler = http.server.SimpleHTTPRequestHandler
+
+PORT = 5000
+
+with socketserver.TCPServer(("", PORT), RequestHandler) as httpd:
+    print("Server runnong on port", PORT)
+    httpd.serve_forever()

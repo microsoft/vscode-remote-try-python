@@ -1,6 +1,7 @@
 {
 	"name": "Python Sample",
 	"dockerFile": "Dockerfile",
+	"appPort": 9000,
 	"context": "..",
 	"extensions": [
 		"ms-python.python",
