@@ -15,15 +15,15 @@ Some things to try:
    2. Try adding some code and check out the language features.
 2. **Terminal:** Press <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>\`</kbd> and type `uname` and or other Linux commands from the terminal window.
 3. **Build, Run, and Debug:**
-   1. Open `sever.py`
-   2. Add a breakpoint (e.g. on line 13).
+   1. Open `app.py`
+   2. Add a breakpoint (e.g. on line 9).
    3. Press <kbd>F5</kbd> to launch the app in the container.
-   4. Once the breakpoint is hit, try hovering over variables, examining locals, and more.
+   4. Once the breakpoint is hit, try hovering over variables (e.g. the app variable on line 7), examining locals, and more.
    5. Continue, then open a local browser and go to `http://localhost:9000` and note you can connect to the server in the container
 4. **Forward another port:**
    1. Stop debugging and remove the breakpoint.
-   2. Open `sever.py`
-   3. Change the server port to 5000. (`PORT = 5000`)
+   2. Open `.vscode/launch.json`
+   3. Change the server port to 5000 on line 20. (`"--port","5000"`)
    4. Press <kbd>F5</kbd> to launch the app in the container.
    5. Press <kbd>F1</kbd> and run the **Remote-Containers: Forward Port...** command.
    6. Select port 5000.
