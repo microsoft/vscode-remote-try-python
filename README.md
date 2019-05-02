@@ -12,7 +12,7 @@ Follow these steps to open this sample in a container:
 
 2. If you're not yet in a development container:
    - Clone this repository.
-   - Press <kbd>F1</kbd> and select the **Remote-Container: Open Folder in Container...** command.
+   - Press <kbd>F1</kbd> and select the **Remote-Containers: Open Folder in Container...** command.
    - Select the cloned copy of this folder, wait for the container to start, and try things out!
    
 ## Things to try
