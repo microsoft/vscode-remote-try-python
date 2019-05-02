@@ -22,7 +22,7 @@ Once you have this sample opened in a container, you'll be able to work with it 
 Some things to try:
 
 1. **Edit:**
-   - Open `server.py`
+   - Open `app.py`
    - Try adding some code and check out the language features.
 2. **Terminal:** Press <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>\`</kbd> and type `uname` and or other Linux commands from the terminal window.
 3. **Build, Run, and Debug:**
