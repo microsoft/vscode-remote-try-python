@@ -2,11 +2,19 @@
 	"name": "Python Sample",
 	"dockerFile": "Dockerfile",
 	"appPort": 9000,
-	"context": "..",
 	"extensions": [
 		"ms-python.python"
 	],
 	"settings": {
-		"python.pythonPath": "/usr/local/bin/python"
-	}
+		"python.pythonPath": "/usr/local/bin/python",
+		"python.linting.pylintEnabled": true,
+		"python.linting.pylintPath": "/usr/local/bin/pylint",
+		"python.linting.enabled": true
+	},
+	"postCreateCommand": "sudo pip install -r requirements.txt",
+	// Comment out the next line to run as root instead. Linux users, 
+	// update Dockerfile with your user's UID/GID if not 1000.
+	"runArgs": [ "-u", "vscode" ]
+}
+
 }
