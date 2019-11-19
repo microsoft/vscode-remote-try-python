@@ -2,7 +2,9 @@
 	"name": "Python Sample",
 	"dockerFile": "Dockerfile",
 
-	// Specifies a list of ports that should be published from the container.
+	// Use 'appPort' to create a container with published ports. If the port isn't working, be sure
+	// your server accepts connections from all interfaces (0.0.0.0 or '*'), not just localhost.
+	// In this case, "--host 0.0.0.0 --port 9000" needs to be passed into Flask to make this happen.
 	"appPort": [9000],
 
 	// Comment out the next line to run as root instead. Linux users, 
