@@ -1,29 +1,29 @@
 {
-	"name": "Python Sample",
+	"name": "Python 3",
+	"context": "..",
 	"dockerFile": "Dockerfile",
-
-	// Use 'appPort' to create a container with published ports. If the port isn't working, be sure
-	// your server accepts connections from all interfaces (0.0.0.0 or '*'), not just localhost.
-	// In this case, "--host 0.0.0.0 --port 9000" needs to be passed into Flask to make this happen.
-	"appPort": [9000],
-
-	// Comment out the next line to run as root instead. Linux users, 
-	// update Dockerfile with your user's UID/GID if not 1000.
-	"runArgs": ["-u", "vscode"],
 
 	// Use 'settings' to set *default* container specific settings.json values on container create. 
 	// You can edit these settings after create using File > Preferences > Settings > Remote.
 	"settings": { 
 		"terminal.integrated.shell.linux": "/bin/bash",
 		"python.pythonPath": "/usr/local/bin/python",
+		"python.linting.enabled": true,
 		"python.linting.pylintEnabled": true,
-		"python.linting.pylintPath": "/usr/local/bin/pylint",
-		"python.linting.enabled": true
+		"python.linting.pylintPath": "/usr/local/bin/pylint"
 	},
 
-	// Specifies a command to run after the container is created
+	// Use 'appPort' to create a container with published ports. If the port isn't working, be sure
+	// your server accepts connections from all interfaces (0.0.0.0 or '*'), not just localhost.
+	"appPort": [ 9000 ],
+
+	// Install flask and any other dependencies
 	"postCreateCommand": "sudo pip install -r requirements.txt",
 
+	// Comment out next line to run as root
+	"remoteUser": "vscode",
+
+	// Add the IDs of extensions you want installed when the container is created in the array below.
 	"extensions": [
 		"ms-python.python"
 	]
