@@ -10,25 +10,34 @@ Follow these steps to open this sample in a container:
 
 1. If this is your first time using a development container, please follow the [getting started steps](https://aka.ms/vscode-remote/containers/getting-started).
 
-2. **Linux users:** Update `USER_UID` and `USER_GID` in `.devcontainer/Dockerfile` with your user UID/GID if not 1000 to avoid creating files as root.
+2. To use this repository, you can either open a locally cloned copy of the code:
 
-3. If you're not yet in a development container:
-   - Clone this repository.
+   - Clone this repository to your local filesystem.
    - Press <kbd>F1</kbd> and select the **Remote-Containers: Open Folder in Container...** command.
    - Select the cloned copy of this folder, wait for the container to start, and try things out!
-   
+
+   Or open the repository in an isolated Docker volume:
+
+    - Press <kbd>F1</kbd> and select the **Remote-Containers: Try a Sample...** command.
+    - Choose the "Python" sample, wait for the container to start and try things out!
+        > **Note:** Under the hood, this will use **Remote-Containers: Open Repository in Container...** command to clone the source code in a Docker volume instead of the local filesystem.   
+
 ## Things to try
 
 Once you have this sample opened in a container, you'll be able to work with it like you would locally. 
 
-> **Note:** This container runs as a non-root user with sudo access by default. Comment out `"runArgs": ["-u", "vscode"]` in `.devcontainer/devcontainer.json` if you'd prefer to run as root.
+> **Note:** This container runs as a non-root user with sudo access by default. Comment out `"remoteUser": "vscode"` in `.devcontainer/devcontainer.json` if you'd prefer to run as root.
 
 Some things to try:
 
 1. **Edit:**
    - Open `app.py`
    - Try adding some code and check out the language features.
-2. **Terminal:** Press <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>\`</kbd> and type `uname` and or other Linux commands from the terminal window.
+2. **Terminal:** 
+    - Press <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>\`</kbd> to open a terminal window.
+    - Type `flask run --host 0.0.0.0 --port 9000 --no-debugger --no-reload` to run the app.
+        > **Note:** It is important to add `--host 0.0.0.0` when using `appPort` in `devcontainer.json` since this uses Docker to "publish" the port rather than forwarding it. It therefore will not work if the application only listens to localhost.
+    - Open a local browser and go to `http://localhost:9000` to see the running app.
 3. **Build, Run, and Debug:**
    - Open `app.py`
    - Add a breakpoint (e.g. on line 9).
@@ -43,6 +52,9 @@ Some things to try:
    - Press <kbd>F1</kbd> and run the **Remote-Containers: Forward Port from Container...** command.
    - Select port 5000.
    - Click "Open Browser" in the notification that appears to access the web app on this new port.
+5. **Run from the command line**
+    - Press <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>\`</kbd> to open a terminal window
+   
 
 ### More samples
 
