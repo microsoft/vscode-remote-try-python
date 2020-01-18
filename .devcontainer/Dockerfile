@@ -16,6 +16,10 @@ ARG USERNAME=vscode
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
+ENV PIP_TARGET=/usr/local/share/pip-global
+ENV PYTHONPATH=${PYTHONPATH}:${PIP_TARGET}
+ENV PATH=${PATH}:${PIP_TARGET}/bin
+
 # Uncomment the following COPY line and the corresponding lines in the `RUN` command if you wish to
 # include your requirements in the image itself. It is suggested that you only do this if your
 # requirements rarely (if ever) change.
@@ -42,6 +46,10 @@ RUN apt-get update \
     && apt-get install -y sudo \
     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME\
     && chmod 0440 /etc/sudoers.d/$USERNAME \
+    #
+    # Create alternate global install location that both uses have rights to access
+    && mkdir -p /usr/local/share/pip-global \
+    && chown ${USERNAME}:root /usr/local/share/pip-global \
     #
     # Avoid having to use "sudo" with pip when running as non-root user
     && echo 'if [ "$(stat -c %U /usr/local/bin)" != "$(id -u)" ]; then \

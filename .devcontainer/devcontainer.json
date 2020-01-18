@@ -18,7 +18,7 @@
 	"appPort": [ 9000 ],
 
 	// Install flask and any other dependencies
-	"postCreateCommand": "sudo pip install -r requirements.txt",
+	"postCreateCommand": "pip install -r requirements.txt",
 
 	// Comment out next line to run as root
 	"remoteUser": "vscode",
