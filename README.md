@@ -35,7 +35,7 @@ Some things to try:
    - Try adding some code and check out the language features.
 2. **Terminal:** 
     - Press <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>\`</kbd> to open a terminal window.
-    - Type `flask run --host 0.0.0.0 --port 9000 --no-debugger --no-reload` to run the app.
+    - Type `python -m flask run --host 0.0.0.0 --port 9000 --no-debugger --no-reload` to run the app.
         > **Note:** It is important to add `--host 0.0.0.0` when using `appPort` in `devcontainer.json` since this uses Docker to "publish" the port rather than forwarding it. It therefore will not work if the application only listens to localhost.
     - Open a local browser and go to `http://localhost:9000` to see the running app.
 3. **Build, Run, and Debug:**
