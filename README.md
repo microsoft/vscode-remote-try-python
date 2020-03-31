@@ -33,17 +33,21 @@ Some things to try:
 1. **Edit:**
    - Open `app.py`
    - Try adding some code and check out the language features.
+
 2. **Terminal:** 
     - Press <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>\`</kbd> to open a terminal window.
     - Type `python -m flask run --port 9000 --no-debugger --no-reload` to run the app.
     - Open a local browser and go to `http://localhost:9000` to see the running app.
-      > **Tip:** If you use this container outside of VS Code via `docker run` with `-p 9000`, you may need to append `--host 0.0.0.0` to the command above. The `-p` option "publishes" the port rather than forwarding it. It therefore will not work if the application only listens to localhost. The `forwardPorts` property in `devcontainer.json` does not have this limitation, but you can use `appPort` to publish instead if you prefer.
+    
+      > **Tip:** If you use this container outside of VS Code via `docker run` with `-p 9000`, you may need to append `--host 0.0.0.0` to the command above. The `-p` option "publishes" the port rather than forwarding it. It therefore will not work if the application only listens to localhost. The `forwardPorts` property in `devcontainer.json` does not have this limitation, but you can use `appPort` property instead if you want to mirror the `docker run` behavior.
+
 3. **Build, Run, and Debug:**
    - Open `app.py`
    - Add a breakpoint (e.g. on line 9).
    - Press <kbd>F5</kbd> to launch the app in the container.
    - Once the breakpoint is hit, try hovering over variables (e.g. the app variable on line 7), examining locals, and more.
    - Continue, then open a local browser and go to `http://localhost:9000` and note you can connect to the server in the container
+
 4. **Forward another port:**
    - Stop debugging and remove the breakpoint.
    - Open `.vscode/launch.json`
@@ -52,9 +56,9 @@ Some things to try:
    - Press <kbd>F1</kbd> and run the **Forward a Port** command.
    - Select port 5000.
    - Click "Open Browser" in the notification that appears to access the web app on this new port.
+
 5. **Run from the command line**
-    - Press <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>\`</kbd> to open a terminal window
-   
+    - Press <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>\`</kbd> to open a terminal window   
 
 ### More samples
 
