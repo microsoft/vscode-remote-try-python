@@ -1,30 +1,42 @@
 {
-	"name": "Python 3",
-	"context": "..",
-	"dockerFile": "Dockerfile",
+	"name": "Python 3 Sample",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": "..",
+		// Update 'VARIANT' to pick a Python version. Rebuild the container 
+		// if it already exists to update. Available variants: 3, 3.6, 3.7, 3.8 
+		"args": { "VARIANT": "3.7" }
+	},
 
-	// Use 'settings' to set *default* container specific settings.json values on container create. 
-	// You can edit these settings after create using File > Preferences > Settings > Remote.
+	// Set *default* container specific settings.json values on container create.
 	"settings": { 
 		"terminal.integrated.shell.linux": "/bin/bash",
 		"python.pythonPath": "/usr/local/bin/python",
 		"python.linting.enabled": true,
 		"python.linting.pylintEnabled": true,
-		"python.linting.pylintPath": "/usr/local/share/pip-global/bin/pylint"
+		"python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8",
+		"python.formatting.blackPath": "/usr/local/py-utils/bin/black",
+		"python.formatting.yapfPath": "/usr/local/py-utils/bin/yapf",
+		"python.linting.banditPath": "/usr/local/py-utils/bin/bandit",
+		"python.linting.flake8Path": "/usr/local/py-utils/bin/flake8",
+		"python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
+		"python.linting.pycodestylePath": "/usr/local/py-utils/bin/pycodestyle",
+		"python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
+		"python.linting.pylintPath": "/usr/local/py-utils/bin/pylint",
+		"python.testing.pytestPath": "/usr/local/py-utils/bin/pytest"
 	},
 
-	// Use 'appPort' to create a container with published ports. If the port isn't working, be sure
-	// your server accepts connections from all interfaces (0.0.0.0 or '*'), not just localhost.
-	"appPort": [ 9000 ],
-
-	// Install flask and any other dependencies
-	"postCreateCommand": "pip install -r requirements.txt",
-
-	// Comment out next line to run as root
-	"remoteUser": "vscode",
-
-	// Add the IDs of extensions you want installed when the container is created in the array below.
+	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
 		"ms-python.python"
-	]
+	],
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [9000],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "pip3 install -r requirements.txt",
+
+	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "vscode"
 }

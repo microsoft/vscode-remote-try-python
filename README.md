@@ -35,9 +35,9 @@ Some things to try:
    - Try adding some code and check out the language features.
 2. **Terminal:** 
     - Press <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>\`</kbd> to open a terminal window.
-    - Type `python -m flask run --host 0.0.0.0 --port 9000 --no-debugger --no-reload` to run the app.
-        > **Note:** It is important to add `--host 0.0.0.0` when using `appPort` in `devcontainer.json` since this uses Docker to "publish" the port rather than forwarding it. It therefore will not work if the application only listens to localhost.
+    - Type `python -m flask run --port 9000 --no-debugger --no-reload` to run the app.
     - Open a local browser and go to `http://localhost:9000` to see the running app.
+      > **Tip:** If you use this container outside of VS Code via `docker run` with `-p 9000`, you may need to append `--host 0.0.0.0` to the command above. The `-p` option "publishes" the port rather than forwarding it. It therefore will not work if the application only listens to localhost. The `forwardPorts` property in `devcontainer.json` does not have this limitation, but you can use `appPort` to publish instead if you prefer.
 3. **Build, Run, and Debug:**
    - Open `app.py`
    - Add a breakpoint (e.g. on line 9).
