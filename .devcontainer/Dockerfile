@@ -10,7 +10,7 @@ RUN if ! cat /etc/group | grep -e "^pip-global:" > /dev/null 2>&1; then groupadd
     && usermod -a -G pip-global vscode \
     && umask 0002 && mkdir -p ${PIP_TARGET} \
     && chown :pip-global ${PIP_TARGET} \
-    && [ -f "/etc/profile.d/00-restore-env.sh" ] && sed -i -e "s/export PATH=/export PATH=\/usr\/local\/pip-global:/" /etc/profile.d/00-restore-env.sh
+    && ( [ ! -f "/etc/profile.d/00-restore-env.sh" ] || sed -i -e "s/export PATH=/export PATH=\/usr\/local\/pip-global:/" /etc/profile.d/00-restore-env.sh )
 
 # [Optional] If your pip requirements rarely change, uncomment this section to add them to the image.
 # COPY requirements.txt /tmp/pip-tmp/
