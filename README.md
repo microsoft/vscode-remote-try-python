@@ -1,20 +1,30 @@
 # Try Out Development Containers: Python
 
-This is a sample project that lets you try out the **[VS Code Remote - Containers](https://aka.ms/vscode-remote/containers)** extension in a few easy steps.
+A **development container** is a running [Docker](https://www.docker.com) container with a well-defined tool/runtime stack and its prerequisites. You can try out development containers with **[GitHub Codespaces](https://github.com/features/codespaces)** or **[Visual Studio Code Remote - Containers](https://aka.ms/vscode-remote/containers)**.
+
+This is a sample project that lets you try out either option in a few easy steps. We have a variety of other [vscode-remote-try-*](https://github.com/search?q=org%3Amicrosoft+vscode-remote-try-&type=Repositories) sample projects, too.
 
 > **Note:** If you're following the quick start, you can jump to the [Things to try](#things-to-try) section. 
 
 ## Setting up the development container
 
-Follow these steps to open this sample in a container:
+### GitHub Codespaces
+Follow these steps to open this sample in a Codespace:
+1. Click the Code drop-down menu and select the **Open with Codespaces** option.
+1. Select **+ New codespace** at the bottom on the pane. If you don't own the repo, this will create a fork of this repository under your account.
 
-1. If this is your first time using a development container, please follow the [getting started steps](https://aka.ms/vscode-remote/containers/getting-started).
+For more info, check out the [GitHub documentation](https://docs.github.com/en/free-pro-team@latest/github/developing-online-with-codespaces/creating-a-codespace#creating-a-codespace).
+
+### VS Code Remote - Containers
+Follow these steps to open this sample in a container using the VS Code Remote - Containers extension:
+
+1. If this is your first time using a development container, please ensure your system meets the pre-reqs (i.e. have Docker installed) in the [getting started steps](https://aka.ms/vscode-remote/containers/getting-started).
 
 2. To use this repository, you can either open the repository in an isolated Docker volume:
 
     - Press <kbd>F1</kbd> and select the **Remote-Containers: Try a Sample...** command.
-    - Choose the "Python" sample, wait for the container to start and try things out!
-        > **Note:** Under the hood, this will use **Remote-Containers: Open Repository in Container...** command to clone the source code in a Docker volume instead of the local filesystem.   
+    - Choose the "Python" sample, wait for the container to start, and try things out!
+        > **Note:** Under the hood, this will use the **Remote-Containers: Clone Repository in Container Volume...** command to clone the source code in a Docker volume instead of the local filesystem. [Volumes](https://docs.docker.com/storage/volumes/) are the preferred mechanism for persisting container data.   
 
    Or open a locally cloned copy of the code:
 
@@ -24,7 +34,7 @@ Follow these steps to open this sample in a container:
 
 ## Things to try
 
-Once you have this sample opened in a container, you'll be able to work with it like you would locally. 
+Once you have this sample opened, you'll be able to work with it like you would locally.
 
 > **Note:** This container runs as a non-root user with sudo access by default. Comment out `"remoteUser": "vscode"` in `.devcontainer/devcontainer.json` if you'd prefer to run as root.
 
@@ -37,6 +47,7 @@ Some things to try:
 2. **Terminal:** 
     - Press <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>\`</kbd> to open a terminal window.
     - Type `python -m flask run --port 9000 --no-debugger --no-reload` to run the app.
+    - Notice that the Python extension is already installed in the container since the `.devcontainer/devcontainer.json` lists `"ms-python.python"` as an extension to install automatically when the container is created.
     - Open a local browser and go to `http://localhost:9000` to see the running app.
     
       > **Tip:** If you use this container outside of VS Code via `docker run` with `-p 9000`, you may need to append `--host 0.0.0.0` to the command above. The `-p` option "publishes" the port rather than forwarding it. It therefore will not work if the application only listens to localhost. The `forwardPorts` property in `devcontainer.json` does not have this limitation, but you can use `appPort` property instead if you want to mirror the `docker run` behavior.
@@ -46,19 +57,20 @@ Some things to try:
    - Add a breakpoint (e.g. on line 9).
    - Press <kbd>F5</kbd> to launch the app in the container.
    - Once the breakpoint is hit, try hovering over variables (e.g. the app variable on line 7), examining locals, and more.
-   - Continue, then open a local browser and go to `http://localhost:9000` and note you can connect to the server in the container
+   - Continue, then open a local browser and go to `http://localhost:9000` and note you can connect to the server in the container.
+   - The status line shows '1 Port Available'. Clicking the status bar entry shows the 'Ports' view that lists the currently available ports.
 
-4. **Forward another port:**
-   - Stop debugging and remove the breakpoint.
-   - Open `.vscode/launch.json`
-   - Change the server port to 5000 on line 20. (`"--port","5000"`)
-   - Press <kbd>F5</kbd> to launch the app in the container.
-   - Press <kbd>F1</kbd> and run the **Forward a Port** command.
-   - Select port 5000.
-   - Click "Open Browser" in the notification that appears to access the web app on this new port.
+4. **Rebuild or update your container** (*Currently, only containers with the VS Code Remote - Containers extension can be rebuilt.*)
 
-5. **Run from the command line**
-    - Press <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>\`</kbd> to open a terminal window   
+   You may want to make changes to your container, such as installing a different version of a software or forwarding a new port. You'll rebuild your container for your changes to take effect. 
+
+   **Forward a port statically:** As an example change, let's forward a port statically in the `.devcontainer/devcontainer.json` file. 
+
+   > **Note:** Remote-Containers and Codespaces also take care of dynamic port forwarding, but there may be instances in which we want to statically declare a forwarded port. 
+   
+   - Open the `.devcontainer/devcontainer.json` file.
+   - Uncomment the `forwardedPorts` attribute and adjust the port number as needed.
+   - Press <kbd>F1</kbd> and select the **Remote-Containers: Rebuild Container** command so the modifications are picked up.  
 
 ### More samples
 
