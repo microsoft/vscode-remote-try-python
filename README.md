@@ -11,7 +11,7 @@ This is a sample project that lets you try out either option in a few easy steps
 ### GitHub Codespaces
 Follow these steps to open this sample in a Codespace:
 1. Click the Code drop-down menu and select the **Open with Codespaces** option.
-1. Select **+ New codespace** at the bottom on the pane. If you don't own the repo, this will create a fork of this repository under your account.
+1. Select **+ New codespace** at the bottom on the pane.
 
 For more info, check out the [GitHub documentation](https://docs.github.com/en/free-pro-team@latest/github/developing-online-with-codespaces/creating-a-codespace#creating-a-codespace).
 
