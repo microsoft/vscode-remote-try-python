@@ -47,8 +47,8 @@ Some things to try:
 2. **Terminal:** 
     - Press <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>\`</kbd> to open a terminal window.
     - Type `python -m flask run --port 9000 --no-debugger --no-reload` to run the app.
+         - The terminal will say your app is `Running on http://127.0.0.1:9000/`. Click on the link in the terminal to view your app running in the browser.
     - Notice that the Python extension is already installed in the container since the `.devcontainer/devcontainer.json` lists `"ms-python.python"` as an extension to install automatically when the container is created.
-    - Open a local browser and go to `http://localhost:9000` to see the running app.
     
       > **Tip:** If you use this container outside of VS Code via `docker run` with `-p 9000`, you may need to append `--host 0.0.0.0` to the command above. The `-p` option "publishes" the port rather than forwarding it. It therefore will not work if the application only listens to localhost. The `forwardPorts` property in `devcontainer.json` does not have this limitation, but you can use `appPort` property instead if you want to mirror the `docker run` behavior.
 
@@ -57,8 +57,9 @@ Some things to try:
    - Add a breakpoint (e.g. on line 9).
    - Press <kbd>F5</kbd> to launch the app in the container.
    - Once the breakpoint is hit, try hovering over variables (e.g. the app variable on line 7), examining locals, and more.
-   - Continue, then open a local browser and go to `http://localhost:9000` and note you can connect to the server in the container.
-   - The status line shows '1 Port Available'. Clicking the status bar entry shows the 'Ports' view that lists the currently available ports.
+   - Continue (<kbd>F5</kbd>). You can connect to the server in the container by either: clicking on `Running on http://0.0.0.0:9000/` in the terminal output, or "Open in Browser" next to port 9000 in the 'Ports' view (you can get to the 'Ports' view by clicking on the "1" in the status bar, which means your app has 1 forwarded port).
+   
+   > **Note:** In Remote - Containers, you can access your app at `http://localhost:9000` in a local browser. But in a browser-based Codespace, you must click the link from the terminal output or the `Ports` view so that the service handles port forwarding in the browser and generates the correct URL.
 
 4. **Rebuild or update your container** (*Currently, only containers with the VS Code Remote - Containers extension can be rebuilt.*)
 
