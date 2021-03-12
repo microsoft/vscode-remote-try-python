@@ -57,11 +57,14 @@ Some things to try:
    - Add a breakpoint (e.g. on line 9).
    - Press <kbd>F5</kbd> to launch the app in the container.
    - Once the breakpoint is hit, try hovering over variables (e.g. the app variable on line 7), examining locals, and more.
-   - Continue (<kbd>F5</kbd>). You can connect to the server in the container by either: clicking on `Running on http://0.0.0.0:9000/` in the terminal output, or "Open in Browser" next to port 9000 in the 'Ports' view (you can get to the 'Ports' view by clicking on the "1" in the status bar, which means your app has 1 forwarded port).
+   - Continue (<kbd>F5</kbd>). You can connect to the server in the container by either: 
+      - Clicking on `Open in Browser` in the notification telling you: `Your service running on port 9000 is available`.
+      - Clicking the globe icon in the 'Ports' view. The 'Ports' view gives you an organized table of your forwarded ports, and you can access it with the command **Ports: Focus on Ports View**.
+   - Notice port 9000 in the 'Ports' view is labeled "My Port." In `devcontainer.json`, you can set `"remote.portsAttributes"`, such as a label for your forwarded ports and the action to be taken when the port is autoforwarded.
    
-   > **Note:** In Remote - Containers, you can access your app at `http://localhost:9000` in a local browser. But in a browser-based Codespace, you must click the link from the terminal output or the `Ports` view so that the service handles port forwarding in the browser and generates the correct URL.
+   > **Note:** In Remote - Containers, you can access your app at `http://localhost:9000` in a local browser. But in a browser-based Codespace, you must click the link from the notification or the `Ports` view so that the service handles port forwarding in the browser and generates the correct URL.
 
-4. **Rebuild or update your container** (*Currently, only containers with the VS Code Remote - Containers extension can be rebuilt.*)
+4. **Rebuild or update your container**
 
    You may want to make changes to your container, such as installing a different version of a software or forwarding a new port. You'll rebuild your container for your changes to take effect. 
 
@@ -71,7 +74,7 @@ Some things to try:
    
    - Open the `.devcontainer/devcontainer.json` file.
    - Uncomment the `forwardedPorts` attribute and adjust the port number as needed.
-   - Press <kbd>F1</kbd> and select the **Remote-Containers: Rebuild Container** command so the modifications are picked up.  
+   - Press <kbd>F1</kbd> and select the **Remote-Containers: Rebuild Container** or **Codespaces: Rebuild Container** command so the modifications are picked up.  
 
 ### More samples
 
