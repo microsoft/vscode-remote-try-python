@@ -60,7 +60,7 @@ Some things to try:
    - Continue (<kbd>F5</kbd>). You can connect to the server in the container by either: 
       - Clicking on `Open in Browser` in the notification telling you: `Your service running on port 9000 is available`.
       - Clicking the globe icon in the 'Ports' view. The 'Ports' view gives you an organized table of your forwarded ports, and you can access it with the command **Ports: Focus on Ports View**.
-   - Notice port 9000 in the 'Ports' view is labeled "My Port." In `devcontainer.json`, you can set `"remote.portsAttributes"`, such as a label for your forwarded ports and the action to be taken when the port is autoforwarded.
+   - Notice port 9000 in the 'Ports' view is labeled "Hello Remote World." In `devcontainer.json`, you can set `"portsAttributes"`, such as a label for your forwarded ports and the action to be taken when the port is autoforwarded.
    
    > **Note:** In Remote - Containers, you can access your app at `http://localhost:9000` in a local browser. But in a browser-based Codespace, you must click the link from the notification or the `Ports` view so that the service handles port forwarding in the browser and generates the correct URL.
 
