@@ -69,8 +69,6 @@ Some things to try:
    You may want to make changes to your container, such as installing a different version of a software or forwarding a new port. You'll rebuild your container for your changes to take effect. 
 
    **Open browser automatically:** As an example change, let's update the `portsAttributes` in the `.devcontainer/devcontainer.json` file to open a browser when our port is automatically forwarded.
-
-   > **Note:** Remote-Containers and Codespaces also take care of dynamic port forwarding, but there may be instances in which we want to statically declare a forwarded port. 
    
    - Open the `.devcontainer/devcontainer.json` file.
    - Modify the `"onAutoForward"` attribute in your `portsAttributes` to `"openBrowser"`.
