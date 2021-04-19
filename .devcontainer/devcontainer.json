@@ -41,8 +41,7 @@
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [9000],
 
-	// Use 'portsAttributes' to set default properties for specific forwarded ports.
-	// You can use a port number (i.e. 3000), range of numbers, or a regex to match the running process.
+	// Use 'portsAttributes' to set default properties for specific forwarded ports. More info: https://code.visualstudio.com/docs/remote/devcontainerjson-reference.
 	"portsAttributes": {
 		"9000": {
 			"label": "Hello Remote World",
@@ -58,6 +57,6 @@
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "pip3 install -r requirements.txt",
 
-	// Comment out to connect as root instead.
+	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode"
 }
