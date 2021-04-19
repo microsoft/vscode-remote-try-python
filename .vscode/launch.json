@@ -5,23 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Flask",
-            "type": "python",
+            "type": "node",
             "request": "launch",
-            "module": "flask",
-            "env": {
-                "FLASK_APP": "app.py",
-                "FLASK_ENV": "development",
-                "FLASK_DEBUG": "0"
-            },
-            "args": [
-                "run",
-                "--host","0.0.0.0",
-                "--port","9000",
-                "--no-debugger",
-                "--no-reload"
-            ],
-            "jinja": true
+            "name": "Launch Program",
+            "program": "${workspaceFolder}/server.js"
         }
     ]
 }
