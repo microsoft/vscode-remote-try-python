@@ -13,7 +13,7 @@ Follow these steps to open this sample in a Codespace:
 1. Click the Code drop-down menu and select the **Open with Codespaces** option.
 1. Select **+ New codespace** at the bottom on the pane.
 
-For more info, check out the [GitHub documentation](https://docs.github.com/en/free-pro-team@latest/github/developing-online-with-codespaces/creating-a-codespace#creating-a-codespace).
+For more information on creating your codespace, visit the [GitHub documentation](https://docs.github.com/en/free-pro-team@latest/github/developing-online-with-codespaces/creating-a-codespace#creating-a-codespace).
 
 ### VS Code Remote - Containers
 Follow these steps to open this sample in a container using the VS Code Remote - Containers extension:
