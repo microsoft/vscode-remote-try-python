@@ -1,5 +1,5 @@
 // For format details, see https://aka.ms/vscode-remote/devcontainer.json or this file's README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.195.0/containers/python-3
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.202.3/containers/python-3
 {
 	"name": "Python 3",
 	"build": {
@@ -9,7 +9,7 @@
 			// Update 'VARIANT' to pick a Python version: 3, 3.9, 3.8, 3.7, 3.6.
 			// Append -bullseye or -buster to pin to an OS version.
 			// Use -bullseye variants on local on arm64/Apple Silicon.
-			"VARIANT": "3-bullseye",
+			"VARIANT": "3.9-bullseye",
 			// Options
 			"NODE_VERSION": "lts/*"
 		}
@@ -23,7 +23,7 @@
 			}
 		},
 		"terminal.integrated.defaultProfile.linux": "bash",
-		"python.pythonPath": "/usr/local/bin/python",
+		"python.defaultInterpreterPath": "/usr/local/bin/python",
 		"python.languageServer": "Pylance",
 		"python.linting.enabled": true,
 		"python.linting.pylintEnabled": true,
