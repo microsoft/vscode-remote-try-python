@@ -22,9 +22,8 @@
 				"path": "/bin/bash"
 			}
 		},
-		"terminal.integrated.defaultProfile.linux": "bash",
 		"python.defaultInterpreterPath": "/usr/local/bin/python",
-		"python.languageServer": "Pylance",
+		"python.languageServer": "Default",
 		"python.linting.enabled": true,
 		"python.linting.pylintEnabled": true,
 		"python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8",
