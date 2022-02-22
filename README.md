@@ -4,7 +4,7 @@ A **development container** is a running [Docker](https://www.docker.com) contai
 
 This is a sample project that lets you try out either option in a few easy steps. We have a variety of other [vscode-remote-try-*](https://github.com/search?q=org%3Amicrosoft+vscode-remote-try-&type=Repositories) sample projects, too.
 
-> **Note:** If you already have a Codespace or dev container, you can jump to the [Things to try](#things-to-try) section. 
+> **Note:** If you already have a codespace or dev container, you can jump to the [Things to try](#things-to-try) section. 
 
 ## Setting up the development container
 
@@ -13,12 +13,12 @@ Follow these steps to open this sample in a Codespace:
 1. Click the Code drop-down menu and select the **Open with Codespaces** option.
 1. Select **+ New codespace** at the bottom on the pane.
 
-For more info, check out the [GitHub documentation](https://docs.github.com/en/free-pro-team@latest/github/developing-online-with-codespaces/creating-a-codespace#creating-a-codespace).
+For more information on creating your codespace, visit the [GitHub documentation](https://docs.github.com/en/free-pro-team@latest/github/developing-online-with-codespaces/creating-a-codespace#creating-a-codespace).
 
 ### VS Code Remote - Containers
 Follow these steps to open this sample in a container using the VS Code Remote - Containers extension:
 
-1. If this is your first time using a development container, please ensure your system meets the pre-reqs (i.e. have Docker installed) in the [getting started steps](https://aka.ms/vscode-remote/containers/getting-started).
+1. If this is your first time using a development container, please ensure your system meets the prerequisites (i.e. have Docker installed) in the [getting started steps](https://aka.ms/vscode-remote/containers/getting-started).
 
 2. To use this repository, you can either open the repository in an isolated Docker volume:
 
