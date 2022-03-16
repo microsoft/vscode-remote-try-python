@@ -19,7 +19,7 @@ For more information on creating your codespace, visit the [GitHub documentation
 
 ### VS Code Remote - Containers
 
-If you already have Docker installed, then you may use [open in dev container](https://insiders.vscode.dev/redirect?url=vscode-insiders://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/microsoft/vscode-remote-try-python) (which provides the same functionality as the Remote - Containers badge above). This installs the Remote - Containers extension if needed, clones the source code in a Docker Volume, and opens it in VS Code.
+If you already have VS Code and Docker installed, you can click the badge above or [here](https://insiders.vscode.dev/redirect?url=vscode-insiders://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/microsoft/vscode-remote-try-python) to get started. Clicking these links will cause VS Code to automatically install the Remote - Containers extension if needed, clone the source code into a container volume, and spin up a dev container for use.
 
 Follow these steps to open this sample in a container using the VS Code Remote - Containers extension:
 
