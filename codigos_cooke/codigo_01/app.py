@@ -1,0 +1,1 @@
+print('pip install -r requirements.txt')
