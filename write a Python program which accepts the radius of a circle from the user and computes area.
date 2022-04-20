@@ -1,0 +1,11 @@
+file=(input("enter name of your file"))
+if file==excel:
+    print("Your extension of file is .exe")
+elif file=="word":
+    print("Your extension of file is .doc")
+elif file=="python":
+    print("Your extension of file is .py")
+elif file=="photos":
+    print("Your extension of file is .jpg")
+else :
+    print("Enter proper file name")
