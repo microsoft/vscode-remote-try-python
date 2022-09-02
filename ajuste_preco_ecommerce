@@ -1,0 +1,24 @@
+erp = int(input('Informe o código erp: ')) 
+vo1 = float(input('Informe o valor original que consta no Json do log: '))
+va1 = float(input('Informe o valor autalizado que consta no Json do log: '))
+vo2 = float(input('Informe o valor do item que consta no pedido no insomnia: '))
+cond = int(input('Informe se houve repetição, 0 senão houve repetição e 1 se houve repetição: '))
+
+if cond == 0:
+    difjs = vo1 - va1
+
+    va2 = vo2 - difjs
+
+    print('{"codigo_erp":', int(erp), ',"valor orignal":', float(vo2), ',"valor_atualizado":', float(va2), '}')
+else:
+    rpt = int(input('Informe quantas vezes houve a repetição do valor '))
+
+    difjs = vo1 - va1
+
+    vrpt = difjs / rpt
+
+    va2 = vo2 - vrpt
+
+    print('{"codigo_erp":', int(erp), ',"valor orignal":', float(vo2), ',"valor_atualizado":', float(va2),'}')
+
+input()
