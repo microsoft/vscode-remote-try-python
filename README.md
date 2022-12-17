@@ -42,8 +42,6 @@ Follow these steps to open this sample in a container using the VS Code Dev Cont
 
 Once you have this sample opened, you'll be able to work with it like you would locally.
 
-> **Note:** This container runs as a non-root user with sudo access by default. Comment out `"remoteUser": "vscode"` in `.devcontainer/devcontainer.json` if you'd prefer to run as root.
-
 Some things to try:
 
 1. **Edit:**
