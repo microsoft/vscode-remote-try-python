@@ -50,7 +50,7 @@ Some things to try:
    - Open `app.py`
    - Try adding some code and check out the language features.
    - Make a spelling mistake and notice it is detected. The [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) extension was automatically installed because it is referenced in `.devcontainer/devcontainer.json`.
-   - Also notice that utilities like `pylint` and the [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) are installed. Tools are installed in the `mcr.microsoft.com/devcontainers/python` image and Dev Container settings and metadata are automatically picked up from [image labels](https://containers.dev/implementors/reference/#labels).
+   - Also notice that utilities like `pylint` and the [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) extension are installed. Tools are installed in the `mcr.microsoft.com/devcontainers/python` image and Dev Container settings and metadata are automatically picked up from [image labels](https://containers.dev/implementors/reference/#labels).
 
 
 2. **Terminal:** 
