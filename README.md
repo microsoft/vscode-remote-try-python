@@ -84,7 +84,7 @@ Some things to try:
    - Press <kbd>F1</kbd> and select the **Dev Containers: Rebuild Container** or **Codespaces: Rebuild Container** command so the modifications are picked up.  
 
 5. **Install Node.js using a Dev Container Feature:**
-   - Press <kbd>F1</kbd> and select the **Dev Containers: Configure Container Features...** or **Codespaces: Configure Container Features...** 
+   - Press <kbd>F1</kbd> and select the **Dev Containers: Configure Container Features...** or **Codespaces: Configure Container Features...** command.
    - Type "node" in the text box at the top.
    - Check check box next to "Node.js (via nvm) and yarn" (published by devcontainers) 
    - Click OK
