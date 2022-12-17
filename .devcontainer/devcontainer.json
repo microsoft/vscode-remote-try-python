@@ -31,11 +31,6 @@
 		}
 	},
 
-	// Use 'otherPortsAttributes' to configure any ports that aren't configured using 'portsAttributes'.
-	// "otherPortsAttributes": {
-	// 		"onAutoForward": "silent"
-	// },
-
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "pip3 install -r requirements.txt"
 
