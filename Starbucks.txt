@@ -1,0 +1,56 @@
+Item	 Calories	 Carb. (g)
+Chonga Bagel	300	50
+8-Grain Roll	380	70
+Almond Croissant	410	45
+Apple Cider Doughnut	400	59
+Banana Nut Bread	420	52
+Blueberry Muffin	360	52
+Blueberry Scone	380	54
+Butter Croissant	260	27
+Caramelized Apple Pound Cake	400	68
+Cat Cake Pop	190	21
+Cheese Danish	290	33
+Chocolate Chip Cookie	570	75
+Chocolate Croissant	340	38
+Chocolate Hazelnut Croissant	390	43
+Cinnamon Morning Bun	390	56
+Cinnamon Raisin Bagel	270	58
+Classic Coffee Cake	330	43
+Confetti Sugar Cookie	410	54
+Double Chocolate Chunk Brownie	480	55
+Everybody's Favorite - Bantam Bagel (2 Pack)	200	28
+Everything Bagel with Cheese	290	53
+Frappuccino Cookie Straw	90	14
+French Toast - Bantam Bagels (2 Pack)	200	30
+Frosted Doughnut Cake Pop	160	22
+Gluten-Free Marshmallow Dream Bar	240	45
+Iced Lemon Pound Cake	470	68
+Kitchen Sink Cookie	420	48
+Macadamia Oat Cookie	390	41
+Maple Pecan Muffin	440	46
+Morning Muffin	410	50
+Mummy Cake Pop	140	20
+Old-Fashioned Glazed Doughnut	480	56
+Owl Sugar Cookie	280	32
+Petite Vanilla Bean Scone	120	18
+Plain Bagel	280	56
+Pumpkin Bread	410	63
+Pumpkin Scone	500	70
+Raccoon Sugar Cookie	330	38
+Sprouted Grain Vegan Bagel	330	57
+Strawberry Yogurt Scone	360	50
+Summer Berry Swirl Croissant	360	54
+The Classic - Bantam Bagels (2 Pack)	200	28
+ Bacon Gouda & Egg Breakfast Sandwich	19	18
+Classic Oatmeal	160	28
+ Double-Smoked Bacon Cheddar & Egg Sandwich	27	21
+ Everything Croissant Pastrami & Cheddar Breakfast Sandwich	22	22
+Ham & Cheese Croissant	320	28
+Hearty Blueberry Oatmeal	220	43
+Reduced-Fat Turkey Bacon & Cage Free Egg White Breakfast Sandwich	210	26
+ Sausage Cheddar & Egg Breakfast Sandwich	28	15
+ Seared Steak Egg & Tomatillo Wrap	18	21
+ Slow-Roasted Ham Swiss & Egg Breakfast Sandwich	23	24
+Sous Vide Egg Bites: Bacon & Gruyere	310	9
+Sous Vide Egg Bites: Chicken Chorizo Tortilla	230	13
+Sous Vide Egg Bites: Egg White & Red Pepper	170	13
