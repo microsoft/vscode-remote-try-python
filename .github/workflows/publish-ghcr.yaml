@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build and push image to ghcr
-        run:
+        run: |
           docker login --username turnmanh --password ${{  secrets.GHTOKEN }} ghcr.io
           docker build . -t ghcr.io/turnmanh/vscode-remote-image:latest
           docker push ghcr.io/turnmanh/vscode-remote-image:latest
