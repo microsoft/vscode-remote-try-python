@@ -16,8 +16,7 @@
 			"extensions": [
 				"streetsidesoftware.code-spell-checker",
 				"ms-python.python",
-				"ms-toolsai.jupyter",
-				"ms-python.black-formatter"
+				"ms-toolsai.jupyter"
 			]
 		}
 	}
