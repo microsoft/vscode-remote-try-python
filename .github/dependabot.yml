@@ -1,0 +1,7 @@
+# For more details, see https://containers.dev/guide/dependabot
+version: 2
+updates:
+  - package-ecosystem: "devcontainers"
+    directory: "/"
+    schedule:
+      interval: weekly
