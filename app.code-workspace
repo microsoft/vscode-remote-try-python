@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "./"
+		}
+	],
+	"settings": {
+		"editor.tabSize": 4,
+		"files.exclude": {
+			"**/.git": true,
+			"**/.DS_Store": true
+		}
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-python.python",
+			"esbenp.prettier-vscode"
+		]
+	}
+}
