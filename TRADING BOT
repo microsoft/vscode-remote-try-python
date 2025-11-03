@@ -1,0 +1,414 @@
+[10/31, 12:56 PM] ISLAM KATO: [10/30, 4:52 PM] ISLAM KATO: crypto_bot/
+├── config.py
+├── main.py
+├── requirements.txt
+├── strategy.py
+└── user_data/
+    └── api_keys.txt
+[10/30, 4:52 PM] ISLAM KATO: python-binance
+pandas
+numpy
+python-dotenv
+backtesting
+ta
+[10/30, 4:53 PM] ISLAM KATO: pip install -r requirements.txt
+[10/30, 4:53 PM] ISLAM KATO: BINANCE_API_KEY="u9281AAiMfFXviHjdCkOeqX8OZNblciGAHtFryj58Ehnq8OX9hGAJ9hCGLlLMzhU"
+BINANCE_API_SECRET="LCCczPRxccBMgDajWikdZfTD4tZ7NmD1BwneSbZvCOWNROmZ4s4P9QNd9OacGh4z"
+[10/30, 4:53 PM] ISLAM KATO: import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+API_KEY = os.getenv("BINANCE_API_KEY")
+API_SECRET = os.getenv("BINANCE_API_SECRET")
+[10/30, 4:54 PM] ISLAM KATO: import time
+from binance.client import Client
+from config import API_KEY, API_SECRET
+from strategy import should_buy, should_sell, get_historical_data
+from risk_management import check_stop_loss, check_take_profit
+import logging
+
+# Set up logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+def run_bot(symbol, timeframe, amount, testnet=True):
+    """
+    Main function to run the trading bot.
+    
+    Args:
+        symbol (str): The trading pair (e.g., 'BTCUSDT').
+        timeframe (str): The candlestick interval (e.g., '5m', '1h').
+        amount (float): The base asset amount to trade with.
+        testnet (bool): Use Binance Testnet if True.
+    """
+    try:
+        client = Client(API_KEY, API_SECRET, testnet=testnet)
+        logging.info(f"Bot connected to Binance {'Testnet' if testnet else 'Live'} network.")
+    except Exception as e:
+        logging.error(f"Failed to connect to Binance client: {e}")
+        return
+
+    # In a live trading bot, you would track your open positions
+    open_position = False
+    
+    while True:
+        try:
+            # 1. Fetch data
+            df = get_historical_data(client, symbol, timeframe)
+            
+            if df is None or df.empty:
+                logging.warning("No data received, waiting for the next cycle.")
+                time.sleep(60 * 5)
+                continue
+
+            # 2. Execute trading strategy
+            if not open_position:
+                if should_buy(df):
+                    logging.info(f"Buy signal detected for {symbol}. Placing buy order...")
+                    # Example: Place a market buy order
+                    order = client.create_market_buy_order(symbol, quantity=amount)
+                    logging.info(f"Buy order placed: {order}")
+                    open_position = True
+            elif open_position:
+                # 3. Implement risk management for open positions
+                if check_stop_loss(df, symbol):
+                    logging.warning(f"Stop-loss triggered for {symbol}. Placing sell order...")
+                    # Example: Place a market sell order to close the position
+                    order = client.create_market_sell_order(symbol, quantity=amount)
+                    logging.info(f"Stop-loss sell order placed: {order}")
+                    open_position = False
+                elif check_take_profit(df, symbol):
+                    logging.info(f"Take-profit triggered for {symbol}. Placing sell order...")
+                    order = client.create_market_sell_order(symbol, quantity=amount)
+                    logging.info(f"Take-profit sell order placed: {order}")
+                    open_position = False
+                elif should_sell(df):
+                    logging.info(f"Sell signal detected for {symbol}. Placing sell order...")
+                    order = client.create_market_sell_order(symbol, quantity=amount)
+                    logging.info(f"Sell order placed: {order}")
+                    open_position = False
+
+        except Exception as e:
+            logging.error(f"An error occurred in the main loop: {e}")
+        
+        # Wait before checking again
+        time.sleep(60 * 5) # 5 minutes
+
+if __name__ == "__main__":
+    # Parameters for the bot
+    TRADING_SYMBOL = 'BTCUSDT'
+    TIMEFRAME = '5m'
+    TRADE_AMOUNT = 0.001  # Quantity of the asset
+    USE_TESTNET = True # Set to False for live trading
+
+    run_bot(TRADING_SYMBOL, TIMEFRAME, TRADE_AMOUNT, USE_TESTNET)
+[10/30, 4:55 PM] ISLAM KATO: import pandas as pd
+import ta
+
+def get_historical_data(client, symbol, timeframe):
+    """
+    Fetches historical candlestick data from Binance.
+    """
+    try:
+        candles = client.get_klines(symbol=symbol, interval=timeframe)
+        df = pd.DataFrame(candles, columns=[
+            'timestamp', 'open', 'high', 'low', 'close', 'volume',
+            'close_time', 'quote_asset_volume', 'number_of_trades',
+            'taker_buy_base_asset_volume', 'taker_buy_quote_asset_volume', 'ignore'
+        ])
+        df['close'] = pd.to_numeric(df['close'])
+        return df
+    except Exception as e:
+        logging.error(f"Failed to fetch historical data: {e}")
+        return None
+
+def should_buy(df):
+    """
+    Simple RSI-based buy strategy: buy when RSI crosses below 30.
+    """
+    if df is None or df.empty:
+        return False
+    
+    rsi = ta.momentum.RSIIndicator(df['close']).rsi()
+    if rsi.iloc[-1] < 30 and rsi.iloc[-2] >= 30:
+        return True
+    return False
+
+def should_sell(df):
+    """
+    Simple RSI-based sell strategy: sell when RSI crosses above 70.
+    """
+    if df is None or df.empty:
+        return False
+    
+    rsi = ta.momentum.RSIIndicator(df['close']).rsi()
+    if rsi.iloc[-1] > 70 and rsi.iloc[-2] <= 70:
+        return True
+    return False
+[10/30, 4:55 PM] ISLAM KATO: import logging
+
+# Define stop-loss and take-profit percentages
+STOP_LOSS_PCT = 0.02 # 2%
+TAKE_PROFIT_PCT = 0.04 # 4%
+
+def check_stop_loss(df, symbol):
+    """
+    Checks for a stop-loss condition.
+    (This is a simplified example. A real bot needs to track entry price.)
+    """
+    # For a live bot, you must track the entry price of your open position.
+    # For this example, we assume we just bought at the previous candle's close.
+    last_price = df['close'].iloc[-1]
+    entry_price = df['close'].iloc[-2]
+
+    if (entry_price - last_price) / entry_price >= STOP_LOSS_PCT:
+        logging.info(f"Stop-loss triggered for {symbol}. Loss: {STOP_LOSS_PCT * 100}%")
+        return True
+    return False
+
+def check_take_profit(df, symbol):
+    """
+    Checks for a take-profit condition.
+    """
+    last_price = df['close'].iloc[-1]
+    entry_price = df['close'].iloc[-2]
+
+    if (last_price - entry_price) / entry_price >= TAKE_PROFIT_PCT:
+        logging.info(f"Take-profit triggered for {symbol}. Profit: {TAKE_PROFIT_PCT * 100}%")
+        return True
+    return False
+[10/30, 4:55 PM] ISLAM KATO: import pandas as pd
+from backtesting import Backtest, Strategy
+from backtesting.lib import crossover
+import ta
+
+# Assuming get_historical_data() from strategy.py is available
+def run_backtest():
+    """
+    Runs a backtest on the defined trading strategy.
+    """
+    # You will need to download historical data for your backtest
+    # For example: df = get_historical_data(client, 'BTCUSDT', Client.KLINE_INTERVAL_5MINUTE)
+    # For this example, let's load a sample dataset
+    df = pd.read_csv("BTCUSDT_5m_sample.csv", index_col=0, parse_dates=True)
+
+    class RSIStrategy(Strategy):
+        rsi_period = 14
+        
+        def init(self):
+            self.rsi = self.I(ta.momentum.RSIIndicator, self.data.Close, window=self.rsi_period)
+
+        def next(self):
+            # Crossover logic for buy and sell signals
+            if crossover(self.rsi, 30):
+                self.buy()
+            elif crossover(self.rsi, 70):
+                self.sell()
+
+    bt = Backtest(df, RSIStrategy, cash=10000, commission=.002)
+    stats = bt.run()
+    print(stats)
+    bt.plot()
+
+if __name__ == '__main__':
+    run_backtest()
+[10/30, 4:56 PM] ISLAM KATO: git clone your_repo_url
+[10/30, 4:56 PM] ISLAM KATO: pm2 start main.py --name crypto_bot
+pm2 logs crypto_bot
+[10/31, 12:56 PM] ISLAM KATO: [10/31, 12:42 PM] Aslam: import pandas as pd
+import ta
+import logging
+
+def get_historical_data(client, symbol, timeframe, limit=200):
+    """
+    Fetches historical candlestick data from Binance.
+    """
+    try:
+        candles = client.get_klines(symbol=symbol, interval=timeframe, limit=limit)
+        df = pd.DataFrame(candles, columns=[
+            'timestamp', 'open', 'high', 'low', 'close', 'volume',
+            'close_time', 'quote_asset_volume', 'number_of_trades',
+            'taker_buy_base_asset_volume', 'taker_buy_quote_asset_volume', 'ignore'
+        ])
+        df['close'] = pd.to_numeric(df['close'])
+        df['timestamp'] = pd.to_datetime(df['timestamp'], unit='ms')
+
+        # Add RSI and EMA indicators
+        df['rsi'] = ta.momentum.RSIIndicator(df['close'], window=14).rsi()
+        df['ema'] = ta.trend.EMAIndicator(df['close'], window=50).ema_indicator()
+
+        return df
+    except Exception as e:
+        logging.error(f"Failed to fetch historical data: {e}")
+        return None
+
+def should_buy(df):
+    """
+    RSI + EMA strategy:
+      - RSI crosses below 30 (oversold)
+      - Price is above the EMA (uptrend confirmation)
+    """
+    if df is None or len(df) < 2:
+        return False
+    
+    if df['rsi'].iloc[-1] < 30 and df['rsi'].iloc[-2] >= 30 and df['close'].iloc[-1] > df['ema'].iloc[-1]:
+        return True
+    return False
+
+def should_sell(df):
+    """
+    RSI + EMA strategy:
+      - RSI crosses above 70 (overbought)
+      - Price falls below the EMA (downtrend confirmation)
+    """
+    if df is None or len(df) < 2:
+        return False
+    
+    if df['rsi'].iloc[-1] > 70 and df['rsi'].iloc[-2] <= 70 and df['close'].iloc[-1] < df['ema'].iloc[-1]:
+        return True
+    return False
+[10/31, 12:44 PM] Aslam: https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage
+[10/31, 12:44 PM] Aslam: import os
+import requests
+from dotenv import load_dotenv
+import logging
+
+load_dotenv()
+
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+
+def send_telegram_message(message):
+    """
+    Sends a Telegram message using your bot token and chat ID.
+    """
+    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+        logging.warning("Telegram credentials not found. Skipping notification.")
+        return
+    
+    try:
+        url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+        payload = {"chat_id": TELEGRAM_CHAT_ID, "text": message}
+        requests.post(url, data=payload)
+    except Exception as e:
+        logging.error(f"Failed to send Telegram message: {e}")
+[10/31, 12:45 PM] Aslam: from notifier import send_telegram_message
+[10/31, 12:45 PM] Aslam: if should_buy(df):
+    logging.info(f"Buy signal detected for {symbol}. Placing buy order...")
+    order = client.create_market_buy_order(symbol, quantity=amount)
+    logging.info(f"Buy order placed: {order}")
+    send_telegram_message(f"✅ BUY ORDER placed for {symbol} — amount: {amount}")
+    open_position = True
+[10/31, 12:46 PM] Aslam: elif check_take_profit(df, symbol):
+    logging.info(f"Take-profit triggered for {symbol}.")
+    order = client.create_market_sell_order(symbol, quantity=amount)
+    send_telegram_message(f"🎯 TAKE-PROFIT triggered for {symbol}")
+    open_position = False
+elif check_stop_loss(df, symbol):
+    logging.warning(f"Stop-loss triggered for {symbol}.")
+    order = client.create_market_sell_order(symbol, quantity=amount)
+    send_telegram_message(f"⚠️ STOP-LOSS triggered for {symbol}")
+    open_position = False
+elif should_sell(df):
+    logging.info(f"Sell signal detected for {symbol}.")
+    order = client.create_market_sell_order(symbol, quantity=amount)
+    send_telegram_message(f"📉 SELL ORDER placed for {symbol}")
+    open_position = False
+[10/31, 12:46 PM] Aslam: send_telegram_message(f"❌ ERROR in main loop: {e}")
+[10/31, 12:48 PM] Aslam: crypto_bot/
+├── trade_logger.py       # Records all trades (buy/sell/time/price)
+├── profit_reporter.py    # Calculates daily P/L and sends a Telegram summary
+[10/31, 12:48 PM] Aslam: import csv
+import os
+from datetime import datetime
+
+TRADE_LOG_FILE = "user_data/trade_history.csv"
+
+def log_trade(symbol, side, price, quantity):
+    """
+    Logs each executed trade (buy/sell) to a CSV file.
+    """
+    os.makedirs(os.path.dirname(TRADE_LOG_FILE), exist_ok=True)
+    file_exists = os.path.isfile(TRADE_LOG_FILE)
+
+    with open(TRADE_LOG_FILE, mode='a', newline='') as file:
+        writer = csv.writer(file)
+        if not file_exists:
+            writer.writerow(["datetime", "symbol", "side", "price", "quantity"])
+        writer.writerow([datetime.utcnow().isoformat(), symbol, side, price, quantity])
+[10/31, 12:49 PM] Aslam: import pandas as pd
+from datetime import datetime, timedelta
+from notifier import send_telegram_message
+from trade_logger import TRADE_LOG_FILE
+
+def calculate_daily_profit():
+    """
+    Calculates total profit/loss from trade history for the last 24 hours.
+    """
+    try:
+        df = pd.read_csv(TRADE_LOG_FILE, parse_dates=['datetime'])
+    except FileNotFoundError:
+        send_telegram_message("📊 No trade history found yet.")
+        return
+    
+    now = datetime.utcnow()
+    last_24h = df[df['datetime'] >= now - timedelta(days=1)]
+    
+    if last_24h.empty:
+        send_telegram_message("📊 No trades in the last 24 hours.")
+        return
+    
+    # Pair buy and sell trades
+    buy_trades = last_24h[last_24h['side'].str.upper() == 'BUY']
+    sell_trades = last_24h[last_24h['side'].str.upper() == 'SELL']
+
+    if buy_trades.empty or sell_trades.empty:
+        send_telegram_message("📊 Insufficient trades to calculate P/L today.")
+        return
+
+    total_profit = 0.0
+    trade_count = 0
+
+    for _, buy in buy_trades.iterrows():
+        # Find nearest sell trade after this buy
+        sell = sell_trades[sell_trades['datetime'] > buy['datetime']].head(1)
+        if sell.empty:
+            continue
+        sell = sell.iloc[0]
+        profit = (sell['price'] - buy['price']) * buy['quantity']
+        total_profit += profit
+        trade_count += 1
+
+    message = (
+        f"📅 *Daily Report* ({now.strftime('%Y-%m-%d')})\n"
+        f"🪙 Trades executed: {trade_count}\n"
+        f"💰 Net P/L: {total_profit:.4f} USDT"
+    )
+    send_telegram_message(message)
+[10/31, 12:49 PM] Aslam: from trade_logger import log_trade
+[10/31, 12:50 PM] Aslam: if should_buy(df):
+    logging.info(f"Buy signal detected for {symbol}. Placing buy order...")
+    order = client.create_market_buy_order(symbol, quantity=amount)
+    last_price = df['close'].iloc[-1]
+    log_trade(symbol, "BUY", last_price, amount)
+    send_telegram_message(f"✅ BUY {symbol} at {last_price} for {amount}")
+    open_position = True
+[10/31, 12:51 PM] Aslam: elif should_sell(df):
+    logging.info(f"Sell signal detected for {symbol}. Placing sell order...")
+    order = client.create_market_sell_order(symbol, quantity=amount)
+    last_price = df['close'].iloc[-1]
+    log_trade(symbol, "SELL", last_price, amount)
+    send_telegram_message(f"📉 SELL {symbol} at {last_price} for {amount}")
+    open_position = False
+[10/31, 12:52 PM] Aslam: pm2 start profit_reporter.py --name daily_report --cron "0 21 * * *"
+[10/31, 12:52 PM] Aslam: import threading
+from profit_reporter import calculate_daily_profit
+
+def schedule_daily_report():
+    calculate_daily_profit()
+    threading.Timer(86400, schedule_daily_report).start()  # 24h interval
+
+if __name__ == "__main__":
+    # existing bot setup...
+    schedule_daily_report()
+    run_bot(TRADING_SYMBOL, TIMEFRAME, TRADE_AMOUNT, USE_TESTNET)
