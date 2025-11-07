@@ -106,6 +106,32 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
+---
+
+## 🐳 Running with Docker (without VS Code)
+
+If you prefer to run this sample using Docker directly, you can use the same base image defined in `.devcontainer/devcontainer.json`.
+
+**Run the container:**
+```bash
+docker run -it --rm \
+  -v $(pwd):/workspace \
+  -w /workspace \
+  -p 9000:9000 \
+  mcr.microsoft.com/devcontainers/python:3.9 bash
+```
+
+Inside the container, install dependencies and run the app:
+```pip install -r requirements.txt
+python -m flask run --host 0.0.0.0 --port 9000 --no-debugger --no-reload
+```
+
+Then open your browser at http://localhost:9000
+ to see it running.
+
+This gives you the same Python 3.9 environment used by Dev Containers, but using plain Docker.
+
+
 ## License
 
 Copyright © Microsoft Corporation All rights reserved.<br />
