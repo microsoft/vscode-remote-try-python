@@ -14,7 +14,97 @@ This is a sample project that lets you try out either option in a few easy steps
 Follow these steps to open this sample in a Codespace:
 1. Click the **Code** drop-down menu.
 2. Click on the **Codespaces** tab.
-3. Click **Create codespace on main** .
+3. Click **Create codespace on main** .# Microsoft Open Source Code of Conduct
+
+This project follows the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+
+The Code of Conduct helps ensure that everyone in our community feels welcome, respected, and safe.  
+All contributors and maintainers are expected to follow these guidelines when interacting in issues, discussions, and pull requests.
+
+If you see behavior that violates this code, please report it immediately.
+
+**Resources:**
+- [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/)
+- [Microsoft Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/)
+- Contact [opencode@microsoft.com](mailto:opencode@microsoft.com) for questions or concerns.
+
+*Contribution Added:* Added short introduction and reporting note for clarity.
+# Microsoft Open Source Code of Conduct
+
+This project follows the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+
+The Code of Conduct helps ensure that everyone in our community feels welcome, respected, and safe.  
+All contributors and maintainers are expected to follow these guidelines when interacting in issues, discussions, and pull requests.
+
+If you see behavior that violates this code, please report it immediately.
+
+**Resources:**
+- [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/)
+- [Microsoft Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/)
+- Contact [opencode@microsoft.com](mailto:opencode@microsoft.com) for questions or concerns.
+
+*Contribution Added:* Added short introduction and reporting note for clarity.
+# Microsoft Open Source Code of Conduct
+
+This project follows the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+
+The Code of Conduct helps ensure that everyone in our community feels welcome, respected, and safe.  
+All contributors and maintainers are expected to follow these guidelines when interacting in issues, discussions, and pull requests.
+
+If you see behavior that violates this code, please report it immediately.
+
+**Resources:**
+- [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/)
+- [Microsoft Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/)
+- Contact [opencode@microsoft.com](mailto:opencode@microsoft.com) for questions or concerns.
+
+*Contribution Added:* Added short introduction and reporting note for clarity.
+# Microsoft Open Source Code of Conduct
+
+This project follows the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+
+The Code of Conduct helps ensure that everyone in our community feels welcome, respected, and safe.  
+All contributors and maintainers are expected to follow these guidelines when interacting in issues, discussions, and pull requests.
+
+If you see behavior that violates this code, please report it immediately.
+
+**Resources:**
+- [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/)
+- [Microsoft Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/)
+- Contact [opencode@microsoft.com](mailto:opencode@microsoft.com) for questions or concerns.
+
+*Contribution Added:* Added short introduction and reporting note for clarity.
+# Microsoft Open Source Code of Conduct
+
+This project follows the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+
+The Code of Conduct helps ensure that everyone in our community feels welcome, respected, and safe.  
+All contributors and maintainers are expected to follow these guidelines when interacting in issues, discussions, and pull requests.
+
+If you see behavior that violates this code, please report it immediately.
+
+**Resources:**
+- [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/)
+- [Microsoft Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/)
+- Contact [opencode@microsoft.com](mailto:opencode@microsoft.com) for questions or concerns.
+
+*Contribution Added:* Added short introduction and reporting note for clarity.
+# Microsoft Open Source Code of Conduct
+
+This project follows the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+
+The Code of Conduct helps ensure that everyone in our community feels welcome, respected, and safe.  
+All contributors and maintainers are expected to follow these guidelines when interacting in issues, discussions, and pull requests.
+
+If you see behavior that violates this code, please report it immediately.
+
+**Resources:**
+- [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/)
+- [Microsoft Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/)
+- Contact [opencode@microsoft.com](mailto:opencode@microsoft.com) for questions or concerns.
+
+*Contribution Added:* Added short introduction and reporting note for clarity.
+
 
 For more information on creating your codespace, visit the [GitHub documentation](https://docs.github.com/en/free-pro-team@latest/github/developing-online-with-codespaces/creating-a-codespace#creating-a-codespace).
 
@@ -110,3 +200,13 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 
 Copyright © Microsoft Corporation All rights reserved.<br />
 Licensed under the MIT License. See LICENSE in the project root for license information.
+
+from flask import Flask
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    return app.send_static_file("index.html")
+    
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
