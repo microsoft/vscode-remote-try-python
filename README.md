@@ -106,6 +106,57 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
+##🐳 Running Without VS Code (Manual Docker Setup)
+This project is designed for use with VS Code Dev Containers, but you can also run it manually using Docker without VS Code.
+
+🔧 Prerequisites
+Docker installed and running
+
+Ensure the Docker daemon is active (sudo systemctl start docker or sudo snap start docker depending on your install method)
+
+▶️ Manual Run Instructions
+Clone the repository
+
+bash
+git clone https://github.com/microsoft/vscode-remote-try-python.git
+cd vscode-remote-try-python
+Ensure Flask is configured to expose the server Update app.py to include:
+
+python
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
+Run the container
+
+bash
+sudo docker run -it --rm \
+  -v $(pwd):/workspace \
+  -w /workspace \
+  -p 5000:5000 \
+  mcr.microsoft.com/devcontainers/python:1-3.12 bash
+Install dependencies and start the app Inside the container:
+
+bash
+pip3 install -r requirements.txt
+python3 app.py
+Open your browser Visit http://localhost:5000 to view the app.
+
+🛠 Troubleshooting
+Docker not found If docker: command not found, ensure Docker is installed and added to your system PATH.
+
+Docker daemon not running If you see Cannot connect to the Docker daemon, start it with:
+
+bash
+sudo systemctl start docker
+# or, if installed via Snap:
+sudo snap start docker
+Empty browser response (ERR_EMPTY_RESPONSE) Ensure:
+
+app.py uses host="0.0.0.0" so Docker can expose the port
+
+You're visiting the correct port (5000)
+
+The container is running and python3 app.py is active
+
 ## License
 
 Copyright © Microsoft Corporation All rights reserved.<br />
