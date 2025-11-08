@@ -106,7 +106,33 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
+🐳 Running This Project with Docker
+📋 Prerequisites
+
+Before you start, make sure you have:
+
+Docker
+
+(Optional) Git
+
+🚀 Steps to Run the App
+1. Clone this repository
+
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+
+2. Build the Docker image
+docker build -t my-python-app .
+
+3. Run the container
+docker run -p 9000:9000 my-python-app
+
+4. Stop the container
+   docker ps         # List running containers
+docker stop <container_id>
+
 ## License
 
 Copyright © Microsoft Corporation All rights reserved.<br />
 Licensed under the MIT License. See LICENSE in the project root for license information.
+
