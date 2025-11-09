@@ -110,3 +110,14 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 
 Copyright © Microsoft Corporation All rights reserved.<br />
 Licensed under the MIT License. See LICENSE in the project root for license information.
+
+---
+
+##  Docker Setup Guide
+
+This repository can also be used directly with Docker for running the sample app or for experimenting with the development container image.
+
+### 🧱 Build the Docker image
+
+```bash
+docker build -t vscode-python .
