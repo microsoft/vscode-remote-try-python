@@ -88,6 +88,57 @@ Some things to try:
    - Click OK
    - Press <kbd>F1</kbd> and select the **Dev Containers: Rebuild Container** or **Codespaces: Rebuild Container** command so the modifications are picked up.
 
+##🐳 Manual Docker Setup (Without VS Code)
+
+If you prefer to use Docker directly — without Visual Studio Code or Dev Containers — you can manually build and run this project in a container.
+
+Prerequisites
+
+Make sure you have:
+
+Docker installed → Install Docker on Ubuntu
+
+Git installed → sudo apt install git -y
+
+Steps
+
+Clone the repository:
+
+git clone https://github.com/microsoft/vscode-remote-try-python.git
+cd vscode-remote-try-python
+
+
+Build the Docker image:
+
+docker build -t vscode-remote-try-python .
+
+
+Run the container:
+
+docker run -it --name python-container -p 9000:9000 vscode-remote-try-python
+
+
+Access the running app:
+
+Once the container starts, the Flask app will be available at:
+
+http://localhost:9000
+
+
+Modify and rebuild (optional):
+
+If you change source code or dependencies, rebuild the container:
+
+docker build -t vscode-remote-try-python .
+
+
+Then rerun it as shown above.
+
+Stop and remove the container (optional):
+
+docker stop python-container
+docker rm python-container
+
 ### More samples
 
 - [Tweeter App - Python and Django](https://github.com/Microsoft/python-sample-tweeterapp)
