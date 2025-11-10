@@ -88,9 +88,72 @@ Some things to try:
    - Click OK
    - Press <kbd>F1</kbd> and select the **Dev Containers: Rebuild Container** or **Codespaces: Rebuild Container** command so the modifications are picked up.
 
-### More samples
+## Running with Docker
 
-- [Tweeter App - Python and Django](https://github.com/Microsoft/python-sample-tweeterapp)
+For users who prefer standard Docker over Dev Containers, this project now includes Docker support.
+
+### Prerequisites
+- [Docker](https://docs.docker.com/get-docker/) installed on your system
+- [Docker Compose](https://docs.docker.com/compose/install/) (included with Docker Desktop)
+
+### Quick Start with Docker Compose
+
+```bash
+# Build and start the application
+docker compose up --build
+
+# Stop the application
+docker compose down
+```
+
+### Alternative: Using Docker directly
+
+```bash
+# Build the image
+docker build -t vscode-remote-try-python .
+
+# Run the container
+docker run --rm -p 9000:9000 vscode-remote-try-python
+```
+
+### Docker Configuration
+
+**Base Image**: `python:3.12-slim` - Lightweight Python runtime
+
+**Services**:
+- `web`: Flask application server
+
+**Ports**:
+- `9000:9000` - Flask app accessible at http://localhost:9000
+
+### Troubleshooting Docker
+
+**Port already in use**:
+```bash
+# Change the host port (left side) in docker-compose.yml
+ports:
+  - "9001:9000"  # Now accessible at http://localhost:9001
+```
+
+**Rebuild after dependency changes**:
+```bash
+docker compose build --no-cache
+docker compose up
+```
+
+**Permission denied (Linux/macOS)**:
+```bash
+# Add user to docker group
+sudo usermod -aG docker $USER
+# Then log out and back in
+```
+
+**View container logs**:
+```bash
+docker compose logs -f
+```
+
+### More samples
 
 ## Contributing
 
