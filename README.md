@@ -8,6 +8,31 @@ This is a sample project that lets you try out either option in a few easy steps
 
 > **Note:** If you already have a codespace or dev container, you can jump to the [Things to try](#things-to-try) section. 
 
+## Prerequisites
+
+Before you begin, ensure you have the following installed on your system:
+
+### For GitHub Codespaces
+- A GitHub account with access to Codespaces  
+- A modern web browser (Chrome, Firefox, Safari, or Edge)
+
+### For VS Code Dev Containers
+- Visual Studio Code - [Download here](https://code.visualstudio.com/)  
+- Docker Desktop - [Download here](https://www.docker.com/products/docker-desktop)  
+- Windows: Docker Desktop 2.0+ on Windows 10 Pro/Enterprise  
+- macOS: Docker Desktop 2.0+  
+- Linux: Docker CE/EE 18.06+ and Docker Compose 1.21+  
+- VS Code Dev Containers extension - Will be installed automatically when you click the badge above
+
+---
+
+## System Requirements
+- Minimum RAM: 4 GB (8 GB recommended)  
+- Disk Space: At least 2 GB free space for container images  
+- Internet Connection: Required for initial setup and downloading container images
+
+> **Note:** If you're new to Docker, check out [Docker's getting started guide](https://docs.docker.com/get-started/) before proceeding.
+
 ## Setting up the development container
 
 ### GitHub Codespaces

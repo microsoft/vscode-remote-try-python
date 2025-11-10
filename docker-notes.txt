@@ -1,0 +1,33 @@
+Docker Configuration Notes
+==========================
+Date: November 9, 2025
+Project: vscode-remote-try-python
+
+Base Image:
+- mcr.microsoft.com/devcontainers/python
+- Microsoft's official Python development container image
+- Optimized for VS Code Remote Development
+
+Services:
+- Single Python development container
+- Runs Flask web application
+
+Ports Exposed:
+- Port 9000: Flask application access
+- Mapped for local browser access
+
+VS Code Extensions (Auto-installed):
+- Python extension
+- pylint (code linting)
+- Code Spell Checker
+- (Check .devcontainer/devcontainer.json for complete list)
+
+Purpose:
+- Provides consistent development environment
+- No need to install Python/dependencies locally
+- Everything runs inside the container
+
+Commands to Remember:
+- docker-compose up: Start the container
+- docker-compose down: Stop the container
+- Access app at: http://localhost:9000
