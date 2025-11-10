@@ -33,7 +33,7 @@ Follow these steps to open this sample in a container using the VS Code Dev Cont
         > **Note:** Under the hood, this will use the **Dev Containers: Clone Repository in Container Volume...** command to clone the source code in a Docker volume instead of the local filesystem. [Volumes](https://docs.docker.com/storage/volumes/) are the preferred mechanism for persisting container data.   
 
    Or open a locally cloned copy of the code:
-
+Note: You can also add / do bug fixes, code improvements, testing, etc... in your contributiNote: You can also add / do bug fixes, code improvements, testing, etc... in your contributiNote: You can also add / do bug fixes, code improvements, testing, etc... in your contributiNote: You can also add / do bug fixes, code improvements, testing, etc... in your contributiNote: You can also add / do bug fixes, code improvements, testing, etc... in your contributiNote: You can also add / do bug fixes, code improvements, testing, etc... in your contributi
    - Clone this repository to your local filesystem.
    - Press <kbd>F1</kbd> and select the **Dev Containers: Open Folder in Container...** command.
    - Select the cloned copy of this folder, wait for the container to start, and try things out!
