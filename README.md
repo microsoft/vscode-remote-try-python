@@ -110,3 +110,16 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 
 Copyright © Microsoft Corporation All rights reserved.<br />
 Licensed under the MIT License. See LICENSE in the project root for license information.
+
+
+## update that i have done as my contribution to kalvium X mathesar
+
+## 🐳 Running This Project with Docker
+
+You can run this project easily inside Docker.
+
+### Build and Run
+
+```bash
+docker build -t vscode-flask-app .
+docker run -it -p 5000:5000 vscode-flask-app
