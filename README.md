@@ -110,3 +110,15 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 
 Copyright © Microsoft Corporation All rights reserved.<br />
 Licensed under the MIT License. See LICENSE in the project root for license information.
+Successfully set up and tested the project using Docker on Ubuntu for local development
+## Docker Setup Tips 
+If you face any issues while building or running the container
+
+- Make sure Docker Desktop (or Docker Engine) is running before opening VS Code.
+Open the project fokder in VS Code and select **"Dev Containers: Reopen in Container"** from the Command Palette.
+- If the container build fails, try rebuilding manually:
+  ```bash
+  docker build -t vscode-python-demo .
+  docker run -it vscode-python-demo /bin/bash.
+
+  Once inside the container , verify that Python is installed.
