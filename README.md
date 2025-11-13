@@ -110,3 +110,12 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 
 Copyright © Microsoft Corporation All rights reserved.<br />
 Licensed under the MIT License. See LICENSE in the project root for license information.
+## Running the Project with Docker
+
+If you prefer to run this sample locally using Docker (instead of VS Code Dev Containers or Codespaces), you can do so easily.
+
+### 🐳 Steps to Run
+
+1. **Build the Docker image:**
+   ```bash
+   docker build -t vscode-python-app .
