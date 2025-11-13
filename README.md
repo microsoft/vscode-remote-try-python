@@ -117,3 +117,14 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 
 Copyright © Microsoft Corporation All rights reserved.<br />
 Licensed under the MIT License. See LICENSE in the project root for license information.
+## 🐳 Running the Project with Docker
+
+You can quickly run this project using Docker:
+
+```bash
+# Build the image
+docker build -t vscode-remote-try-python .
+
+# Run the container
+docker run -it -p 8000:8000 vscode-remote-try-python
+docker-compose up
