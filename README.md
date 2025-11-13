@@ -1,4 +1,11 @@
 # Try Out Development Containers: Python
+## 🐳 Running the Project with Docker
+
+You can also build and run this project manually using the same base image that the VS Code Dev Container uses.
+
+```bash
+docker pull mcr.microsoft.com/vscode/devcontainers/python:0-3.7
+docker run -it -v $(pwd):/workspace mcr.microsoft.com/vscode/devcontainers/python:0-3.7 bash
 
 [![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/microsoft/vscode-remote-try-python)
 
@@ -110,3 +117,14 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 
 Copyright © Microsoft Corporation All rights reserved.<br />
 Licensed under the MIT License. See LICENSE in the project root for license information.
+## 🐳 Running the Project with Docker
+
+You can quickly run this project using Docker:
+
+```bash
+# Build the image
+docker build -t vscode-remote-try-python .
+
+# Run the container
+docker run -it -p 8000:8000 vscode-remote-try-python
+docker-compose up
