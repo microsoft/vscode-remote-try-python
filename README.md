@@ -40,7 +40,7 @@ Follow these steps to open this sample in a container using the VS Code Dev Cont
 
 ## Things to try
 
-Once you have this sample opened, you'll be able to work with it like you would locally.
+Once you have this sample opened, you'll be able to work with it as you would locally.
 
 Some things to try:
 
@@ -48,7 +48,7 @@ Some things to try:
    - Open `app.py`
    - Try adding some code and check out the language features.
    - Make a spelling mistake and notice it is detected. The [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) extension was automatically installed because it is referenced in `.devcontainer/devcontainer.json`.
-   - Also notice that utilities like `pylint` and the [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) extension are installed. Tools are installed in the `mcr.microsoft.com/devcontainers/python` image and Dev Container settings and metadata are automatically picked up from [image labels](https://containers.dev/implementors/reference/#labels).
+   - Also notice that utilities like `pylint` and the [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) extension are installed. Tools are installed in the `mcr.microsoft.com/devcontainers/python` image, and Dev Container settings and metadata are automatically picked up from [image labels](https://containers.dev/implementors/reference/#labels).
 
 
 2. **Terminal:** 
@@ -57,13 +57,13 @@ Some things to try:
          - The terminal will say your app is `Running on http://127.0.0.1:9000/`. Click on the link in the terminal to view your app running in the browser.
     - Notice that the Python extension is already installed in the container since the `.devcontainer/devcontainer.json` lists `"ms-python.python"` as an extension to install automatically when the container is created.
     
-      > **Tip:** If you use this container outside of VS Code via `docker run` with `-p 9000`, you may need to append `--host 0.0.0.0` to the command above. The `-p` option "publishes" the port rather than forwarding it. It therefore will not work if the application only listens to localhost. The `forwardPorts` property in `devcontainer.json` does not have this limitation, but you can use `appPort` property instead if you want to mirror the `docker run` behavior.
+      > **Tip:** If you use this container outside of VS Code via `docker run` with `-p 9000`, you may need to append `--host 0.0.0.0` to the command above. The `-p` option "publishes" the port rather than forwarding it. It therefore will not work if the application only listens to localhost. The `forwardPorts` property in `devcontainer.json` does not have this limitation, but you can use the `appPort` property instead if you want to mirror the `docker run` behavior.
 
 3. **Build, Run, and Debug:**
    - Open `app.py`
-   - Add a breakpoint (e.g. on line 9).
+   - Add a breakpoint (e.g., on line 9).
    - Press <kbd>F5</kbd> to launch the app in the container.
-   - Once the breakpoint is hit, try hovering over variables (e.g. the app variable on line 7), examining locals, and more.
+   - Once the breakpoint is hit, try hovering over variables (e.g., the app variable on line 7), examining locals, and more.
    - Continue (<kbd>F5</kbd>). You can connect to the server in the container by either: 
       - Clicking on `Open in Browser` in the notification telling you: `Your service running on port 9000 is available`.
       - Clicking the globe icon in the 'Ports' view. The 'Ports' view gives you an organized table of your forwarded ports, and you can access it with the command **Ports: Focus on Ports View**.
@@ -99,14 +99,15 @@ Contributor License Agreement (CLA) declaring that you have the right to, and ac
 the rights to use your contribution. For details, visit https://cla.microsoft.com.
 
 When you submit a pull request, a CLA-bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the instructions
+a CLA and decorate the PR appropriately (e.g., by labeling or commenting). Follow the instructions
 provided by the bot. You will only need to do this once across all repos using our CLA.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
+For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
 ## License
 
-Copyright © Microsoft Corporation All rights reserved.<br />
+Copyright © Microsoft Corporation. All rights reserved.<br />
 Licensed under the MIT License. See LICENSE in the project root for license information.
+
