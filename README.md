@@ -40,6 +40,12 @@ Follow these steps to open this sample in a container using the VS Code Dev Cont
 
 ## Things to try
 
+### Toolchain
+
+This sample uses Python 3.14 on Debian 13 (Trixie) and Flask 3.1.3.
+The container installs [requirements.txt](requirements.txt) automatically.
+Run `python -m pip check` to check dependencies and `python -m flask run --port 9000` to start the sample.
+
 Once you have this sample opened, you'll be able to work with it like you would locally.
 
 Some things to try:
