@@ -63,8 +63,14 @@ Some things to try:
          - The terminal will say your app is `Running on http://127.0.0.1:9000/`. Click on the link in the terminal to view your app running in the browser.
     - Notice that the Python extension is already installed in the container since the `.devcontainer/devcontainer.json` lists `"ms-python.python"` as an extension to install automatically when the container is created.
     
-      > **Tip:** If you use this container outside of VS Code via `docker run` with `-p 9000`, you may need to append `--host 0.0.0.0` to the command above. The `-p` option "publishes" the port rather than forwarding it. It therefore will not work if the application only listens to localhost. The `forwardPorts` property in `devcontainer.json` does not have this limitation, but you can use `appPort` property instead if you want to mirror the `docker run` behavior.
-
+      > **Tip:** > **Important Tip on Networking:**
+> The default Flask command (`python -m flask run`) binds the server only to the local host interface (`127.0.0.1`). When running inside a Docker container, `127.0.0.1` is *inside* the container and cannot be accessed or entered from your local machine.
+>
+> To make the app accessible from your host machine (whether using `docker run -p` or other tools), you must explicitly tell Flask to bind to **all** network interfaces by appending the host flag:
+>
+> `python -m flask run --port 9000 --no-debugger --no-reload --host 0.0.0.0`
+>
+> VS Code Dev Containers automatically handles this forwarding, but knowing the `--host 0.0.0.0` flag is essential if you ever run the container manually or troubleshoot networking.
 3. **Build, Run, and Debug:**
    - Open `app.py`
    - Add a breakpoint (e.g. on line 9).
